@@ -1,6 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://src/characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/characters/PlayerV2Mech.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/music/TOO_INTENSE.mp3" type="AudioStream" id=2]
+[ext_resource path="res://src/scenes/World.gd" type="Script" id=3]
+[ext_resource path="res://assets/testing/grad-sternsystem-und-gasnebelfleck-panorama-karte-der-umwelt-hdri-equirectangular-projektion-kugelf-rmiges-abbildung-d-154255998.jpg" type="Texture" id=4]
+[ext_resource path="res://src/objects/Box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/objects/LightBall.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 20, 2, 20 )
@@ -8,9 +13,22 @@ size = Vector3( 20, 2, 20 )
 [sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( -10, 1, 10, 10, 1, -10, 10, 1, 10, -10, 1, -10, -10, -1, 10, 10, -1, -10, 10, -1, 10, -10, -1, -10, 10, 1, 10, -10, 1, -10, 10, 1, -10, -10, 1, 10, 10, -1, 10, -10, -1, -10, 10, -1, -10, -10, -1, 10, 10, 1, 10, -10, -1, 10, -10, 1, 10, 10, -1, 10, 10, 1, -10, -10, -1, -10, -10, 1, -10, 10, -1, -10 )
 
+[sub_resource type="PanoramaSky" id=3]
+panorama = ExtResource( 4 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 3 )
+ambient_light_energy = 0.0
+
 [node name="World" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.993349, 0.115145, 0, -0.115145, 0.993349, 0, 11.2575, 14.2572 )
 
 [node name="PlatformBasic" type="StaticBody" parent="."]
+collision_layer = 2
 
 [node name="MeshInstance" type="MeshInstance" parent="PlatformBasic"]
 mesh = SubResource( 1 )
@@ -19,8 +37,34 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="PlatformBasic"]
 shape = SubResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2339, 0 )
+use_collision = true
+collision_layer = 2
+radius = 41.7246
+height = 20.0
+sides = 32
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.993349, 0.115145, 0, -0.115145, 0.993349, 0, 11.2575, 14.2572 )
+[node name="PlayerV2Mech" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.05577, 0 )
+
+[node name="TOOINTENSEMP3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 4 )
+
+[node name="Box" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.149, -0.568828, -22.3769 )
+
+[node name="Box2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.149, 1.07794, -22.3769 )
+
+[node name="Box3" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.149, 3.4227, -22.3769 )
+
+[node name="Box4" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.149, 5.09656, -22.3769 )
+
+[node name="LightBall" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 7, 0 )

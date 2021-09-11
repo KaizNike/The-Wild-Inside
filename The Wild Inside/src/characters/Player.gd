@@ -30,17 +30,22 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventMouseMotion:
+		# Look Down
 		if event.relative.y > 0:
 			tree["parameters/camlookUPDOWN/blend_position"] -= camLookChange
 #			print('down')
 			pass
+		# Look Up
 		if event.relative.y < 0:
 			tree["parameters/camlookUPDOWN/blend_position"] += camLookChange
 #			print("up")
 			pass
+		# Turn Left
 		if event.relative.x > 0:
+			print(get_transform().basis.x)
 			tree["parameters/turnLEFTRIGHT/blend_position"] += camLookChange
 			
+		# Turn Right
 		if event.relative.x < 0:
 			tree["parameters/turnLEFTRIGHT/blend_position"] -= camLookChange
 

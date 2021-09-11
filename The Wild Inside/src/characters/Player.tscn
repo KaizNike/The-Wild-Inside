@@ -23,7 +23,7 @@ blend_point_1/node = SubResource( 10 )
 blend_point_1/pos = 1.0
 
 [sub_resource type="AnimationNodeBlendTree" id=3]
-graph_offset = Vector2( -47, -75 )
+graph_offset = Vector2( -47, -28 )
 nodes/Add2/node = SubResource( 12 )
 nodes/Add2/position = Vector2( 365, 62.5 )
 nodes/camlookUPDOWN/node = ExtResource( 1 )

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/objects/LightBall.tscn" type="PackedScene" id=1]
+
+[node name="Arena" type="Spatial"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+width = 80.0
+height = 1.0
+depth = 125.0
+
+[node name="LightBall" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.78455, 0 )
