@@ -7,7 +7,11 @@
 radius = 2.0
 height = 6.0
 
-[node name="PlayerV2Mech" type="KinematicBody"]
+[node name="PlayerV2Mech" type="KinematicBody" groups=[
+"player",
+]]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="scene" parent="." instance=ExtResource( 1 )]
@@ -22,9 +26,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 
 [node name="CamBoom" type="SpringArm" parent="CamPivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-collision_mask = 2
 spring_length = 5.0
 
 [node name="Camera" type="Camera" parent="CamPivot/CamBoom"]
+far = 2000.0
 
 [editable path="scene"]

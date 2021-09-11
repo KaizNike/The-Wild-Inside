@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="The Wild Inside"
-run/main_scene="res://src/scenes/World.tscn"
+run/main_scene="res://src/scenes/WorldTest1.tscn"
 config/icon="res://icon_proto_square_small.png"
+
+[autoload]
+
+Globals="*res://src/scripts/globals.gd"
 
 [input]
 
@@ -44,8 +48,9 @@ jump={
 
 [layer_names]
 
-3d_physics/layer_1="player"
-3d_physics/layer_2="enviroment"
+3d_physics/layer_1="enviroment"
+3d_physics/layer_2="player"
+3d_physics/layer_3="objects"
 
 [physics]
 

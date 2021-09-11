@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/testing/grad-sternsystem-und-gasnebelfleck-panorama-karte-der-umwelt-hdri-equirectangular-projektion-kugelf-rmiges-abbildung-d-154255998.jpg" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_energy = 0.0
+
+[node name="TestEnviroment" type="WorldEnvironment"]
+environment = SubResource( 2 )

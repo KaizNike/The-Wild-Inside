@@ -14,6 +14,9 @@ export(float, 0, 90) var max_pitch : float = 90
 var velocity = Vector3()
 var y_velocity : float
 
+var player = 0
+var team = 1
+
 onready var cam_pivot = $CamPivot
 onready var cam = $CamPivot/CamBoom/Camera
 
@@ -33,6 +36,7 @@ func _input(event):
 
 func _physics_process(delta):
 	_handle_movement(delta)
+	print(translation.y)
 	
 func _handle_movement(delta):
 	var dir = Vector3.ZERO
