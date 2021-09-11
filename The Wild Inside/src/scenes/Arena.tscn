@@ -37,4 +37,7 @@ collision_mask = 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.56788, 0 )
 shape = SubResource( 2 )
 
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42.7542, 0 )
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

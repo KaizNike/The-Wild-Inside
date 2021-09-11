@@ -37,7 +37,6 @@ func _input(event):
 func _physics_process(delta):
 	_handle_movement(delta)
 #	print(translation.y)
-#	print(translation.y)
 	
 func _handle_movement(delta):
 	var dir = Vector3.ZERO
