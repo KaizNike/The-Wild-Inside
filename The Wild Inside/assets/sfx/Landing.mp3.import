@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Landing.mp3-5ab718e05cd0cfc7572ee420fd73b1f5.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/Landing.mp3"
+dest_files=[ "res://.import/Landing.mp3-5ab718e05cd0cfc7572ee420fd73b1f5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

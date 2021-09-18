@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Arena_Brawl.mp3-4c0100290d90e78ff26df37a706409fb.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Arena_Brawl.mp3"
+dest_files=[ "res://.import/Arena_Brawl.mp3-4c0100290d90e78ff26df37a706409fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

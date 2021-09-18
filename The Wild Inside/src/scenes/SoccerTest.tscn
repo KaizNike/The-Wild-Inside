@@ -3,8 +3,8 @@
 [ext_resource path="res://src/scenes/Arena.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/objects/SpawnPlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/music/TOOINTENSEMP3.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/characters/PlayerV2Mech.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/resources/TestEnviroment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/characters/PlayerMechaV4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/resources/WorldEnvironmentRed.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/scenes/SoccerTest.gd" type="Script" id=6]
 
 [node name="SoccerTest" type="Spatial"]
@@ -18,9 +18,8 @@ script = ExtResource( 6 )
 
 [node name="Players" type="Node" parent="."]
 
-[node name="PlayerV2Mech" parent="Players" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 113.107, 10.7927, 0 )
-jump_power = 108.0
+[node name="PlayerMechaV4" parent="Players" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 263.053, 46.5113, 0 )
 
 [node name="Spawn" type="Node" parent="."]
 
@@ -176,7 +175,7 @@ transform = Transform( -0.904939, 0, -0.425542, 0, 1, 0, 0.425542, 0, -0.904939,
 use_collision = true
 radius = 8.0
 
-[node name="TestEnviroment" parent="." instance=ExtResource( 5 )]
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.990774, 0.135525, 0, -0.135525, 0.990774, 0, 27.5937, 0 )
+
+[node name="WorldEnvironmentRed" parent="." instance=ExtResource( 5 )]
