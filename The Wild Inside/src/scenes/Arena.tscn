@@ -29,6 +29,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 160 )
 
 [node name="CaptureNet2" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 8, -160 )
+team = 2
 
 [node name="Area" type="Area" parent="."]
 collision_mask = 2

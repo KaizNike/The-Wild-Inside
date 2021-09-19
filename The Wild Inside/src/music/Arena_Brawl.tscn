@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/music/Arena_Brawl.mp3" type="AudioStream" id=1]
+
+[node name="Arena_Brawl" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )

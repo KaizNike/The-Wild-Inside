@@ -3,7 +3,7 @@ extends Spatial
 onready var positions = [$Spawn/SpawnPlatform/Position3D, $Spawn/SpawnPlatform2/Position3D, $Spawn/SpawnPlatform3/Position3D, $Spawn/SpawnPlatform4/Position3D, $Spawn/SpawnPlatform5/Position3D, $Spawn/SpawnPlatform6/Position3D, $Spawn/SpawnPlatform7/Position3D, $Spawn/SpawnPlatform8/Position3D]
 
 func _ready():
-	$Music/TOOINTENSEMP3.play()
+	$Music/Arena_Brawl.play()
 
 func _physics_process(delta):
 	for node in $Players.get_children():

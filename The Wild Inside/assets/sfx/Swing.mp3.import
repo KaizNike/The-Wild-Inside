@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Swing.mp3-586a5591886224511b2cc311f0b15a5a.mp3str" ]
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

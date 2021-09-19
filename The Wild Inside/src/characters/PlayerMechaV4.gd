@@ -15,8 +15,9 @@ var velocity = Vector3()
 var y_velocity : float
 var falling = false
 
-var player = 0
-var team = 1
+export var playerType = "human"
+export var player = 0
+export var team = 1
 
 onready var cam_pivot = $CamPivot
 onready var cam = $CamPivot/CamBoom/Camera
@@ -26,21 +27,25 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if not is_on_floor():
 		falling = true
+	if playerType == "human":
+		$CamPivot/CamBoom/Camera.current = true
 #	state_machine = $AnimationTree.get("parameters/playback")
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if event is InputEventMouseButton:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x * mouse_sens
-		cam_pivot.rotation_degrees.x -= event.relative.y * mouse_sens
-		cam_pivot.rotation_degrees.x = clamp(cam_pivot.rotation_degrees.x, min_pitch, max_pitch)
+	if playerType == "human":
+		if Input.is_action_just_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if event is InputEventMouseButton:
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if event is InputEventMouseMotion:
+			rotation_degrees.y -= event.relative.x * mouse_sens
+			cam_pivot.rotation_degrees.x -= event.relative.y * mouse_sens
+			cam_pivot.rotation_degrees.x = clamp(cam_pivot.rotation_degrees.x, min_pitch, max_pitch)
 
 func _physics_process(delta):
-	_handle_movement(delta)
+	if playerType == "human":
+		_handle_movement(delta)
 #	print(translation.y)
 	
 func _handle_movement(delta):
@@ -76,16 +81,24 @@ func _handle_movement(delta):
 	y_velocity = velocity.y
 
 func _handle_animation(vel):
+	if Input.is_action_just_pressed("melee_swing"):
+		state_machine.travel("Melee Swipe")
+		$SFX/Swing.play()
+		return
 	if vel.y > 0 and is_on_floor() and not falling:
 		falling = true
-		print("NoW JUMP!")
+#		print("NoW JUMP!")
 		state_machine.travel("Backward Jump")
 		$SFX/Jump.play()
+#		if $SFX/Jump.playing == false:
+#			$SFX/Jump.play()
 		return
 	elif falling and is_on_floor():
 		falling = false
 		state_machine.travel("Landing")
 		$SFX/Land.play()
+#		if $SFX/Land.playing == false:
+#			$SFX/Land.play()
 #	if not is_equal_approx(vel.x, 0.0):
 #		print(vel.x)
 	elif (not is_equal_approx(vel.x,0.0) and is_on_floor()) or (not is_equal_approx(vel.z,0) and is_on_floor()):
@@ -97,3 +110,13 @@ func _handle_animation(vel):
 	else:
 #		print("Idle")
 		state_machine.travel("Idle")
+
+
+func _on_HurtBox_area_entered(area):
+	if area.is_in_group("damage"):
+		if area == $AttackBox:
+			print("Self")
+			return
+		print(playerType + " hit!")
+		$SFX/Hit.play()
+	pass # Replace with function body.
