@@ -5,7 +5,7 @@
 # Credits
 Programmer: KaizarNike
 Artist: BeanieBagStreams
-Sound Expert: Mallow
+Sound Expert: Marrow
 ## Assets
 Testing:
 - Lowpoly Mech by starkeron @ sketchfab
