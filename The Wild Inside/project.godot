@@ -11,12 +11,13 @@ config_version=4
 [application]
 
 config/name="The Wild Inside"
-run/main_scene="res://src/scenes/WorldTest1.tscn"
+run/main_scene="res://src/scenes/Menu.tscn"
 config/icon="res://icon_proto_square_small.png"
 
 [autoload]
 
 Globals="*res://src/scripts/globals.gd"
+MusicMaster="*res://src/scripts/musicMaster.gd"
 
 [input]
 

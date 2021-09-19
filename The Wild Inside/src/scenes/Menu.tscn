@@ -1,6 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/music/Arena_Brawl.mp3" type="AudioStream" id=1]
+[ext_resource path="res://src/scenes/Menu.gd" type="Script" id=2]
+[ext_resource path="res://src/ui/GameUI.tscn" type="PackedScene" id=3]
 
 [node name="Menu" type="Node"]
+script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -25
@@ -17,8 +22,9 @@ __meta__ = {
 scale = Vector2( 2.5, 2.5 )
 amount = 50
 lifetime = 3.0
+preprocess = 15.0
 emission_shape = 1
-emission_sphere_radius = 5.0
+emission_sphere_radius = 100.0
 direction = Vector2( 0, 0 )
 spread = 90.0
 gravity = Vector2( 60, 98 )
@@ -55,14 +61,31 @@ margin_right = 100.0
 margin_bottom = 14.0
 text = "The Wild Inside"
 
-[node name="Button" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 100.0
 margin_bottom = 38.0
 text = "Soccer Match"
 
-[node name="Button3" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer"]
+visible = false
+margin_top = 42.0
+margin_right = 100.0
+margin_bottom = 62.0
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 100.0
 margin_bottom = 62.0
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -24.0
+
+[node name="GameUI" parent="." instance=ExtResource( 3 )]
+
+[connection signal="pressed" from="Control/CenterContainer/PanelContainer/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/PanelContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Control/CenterContainer/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

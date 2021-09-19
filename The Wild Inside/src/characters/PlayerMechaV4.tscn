@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://assets/3d/Mecha Final/Material.material" type="Material" id=1]
 [ext_resource path="res://assets/3d/Mecha Final/Metal.material" type="Material" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/music/TOOINTENSEMP3.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/sfx/Swing.mp3" type="AudioStream" id=12]
 [ext_resource path="res://assets/sfx/Hit_1.0.mp3" type="AudioStream" id=13]
+[ext_resource path="res://src/ui/GameUI.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 2.0
@@ -922,7 +923,7 @@ transform = Transform( 0, 0, -1, 0, -1, 0, -1, 0, 0, 0.00209063, 0.465909, 0.869
 transform = Transform( 1, 0, 3.17866e-08, 0, 1, 0, -3.17866e-08, 0, 1, 5.9696e-08, 3.21916, -3.84849e-11 )
 
 [node name="Bone009" type="Spatial" parent="Mecha(2)/Main/Bone/Bone005/Bone006"]
-transform = Transform( 1, -7.38232e-08, 5.86921e-08, 7.28531e-08, 0.209459, -0.977818, 5.9892e-08, 0.977818, 0.209459, 5.97625e-08, 3.42029, 4.24798e-11 )
+transform = Transform( 1, -7.38231e-08, 5.86921e-08, 7.28531e-08, 0.209459, -0.977818, 5.9892e-08, 0.977818, 0.209459, 5.97625e-08, 3.42029, 4.24798e-11 )
 
 [node name="Cube010" type="MeshInstance" parent="Mecha(2)/Main/Bone/Bone005/Bone006/Bone009"]
 transform = Transform( 0.405945, 1.18299e-08, -8.07704e-08, 2.10675e-08, 0.0850286, 1.33146, 1.66112e-08, -0.39694, 0.285213, -0.00161129, 1.6616, 0.366499 )
@@ -1046,4 +1047,8 @@ collision_mask = 8
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 43 )
 
+[node name="GameUI" parent="." instance=ExtResource( 14 )]
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="GameUI"]
